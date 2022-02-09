@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionListComponent } from './transactions/components/transaction-list/transaction-list.component';
+import { TransactionResolver } from './data/resolver/transaction.resolver';
 
 const routes: Routes = [
   {
     path: 'transactions',
     component: TransactionsComponent,
+    resolve: {
+      transactions: TransactionResolver
+    },
     children: [
       {
         path: '',

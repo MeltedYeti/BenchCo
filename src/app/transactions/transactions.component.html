@@ -12,8 +12,11 @@
     <th id="th_ledger" mat-header-cell *matHeaderCellDef>Account</th>
     <td mat-cell *matCellDef="let transaction">{{ transaction.ledger }}</td>
   </ng-container>
-  <ng-container matColumnDef="ledger">
+  <ng-container matColumnDef="amount">
     <th id="th_amount" mat-header-cell *matHeaderCellDef>Account</th>
     <td mat-cell *matCellDef="let transaction">${{ transaction.amount }}</td>
   </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
 </table>
