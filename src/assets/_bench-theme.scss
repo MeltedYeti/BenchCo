@@ -1,0 +1,23 @@
+@use "@angular/material" as mat;
+@import "component-mixin";
+
+$bench-typography: mat.define-typography-config();
+
+$bench-primary-palette: mat.define-palette(mat.$indigo-palette);
+$bench-accent-palette: mat.define-palette(mat.$blue-gray-palette);
+$bench-theme: mat.define-dark-theme((
+  color: (
+    primary: $bench-primary-palette,
+    accent: $bench-accent-palette
+  )
+));
+
+@include mat.core($bench-theme);
+
+
+@mixin bench-theme() {
+  @include mat.all-component-themes($bench-theme);
+  @include bench-component-theme($bench-theme, $bench-typography);
+}
+
+

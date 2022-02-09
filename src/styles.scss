@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@use "assets/bench-theme";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+.bench-root {
+  @include bench-theme.bench-theme();
+}
