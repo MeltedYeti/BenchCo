@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Subject, takeUntil } from 'rxjs';
-import { Page, Transaction } from '../model';
+import { Transaction } from '../model';
 
 @Component({
   selector: 'bch-transactions',
@@ -26,10 +26,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this._route.data.pipe(
       map(d => d['transactions']),
       takeUntil(this._onDestroy)
-    ).subscribe((page: Page<Transaction>) => {
-      this.transactions = page.data;
-      this.total = page.totalCount;
-      this.page = page.page;
+    ).subscribe((data: Transaction[]) => {
+      this.transactions = data;
     });
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbstractDataService } from './abstract-data.service';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { TransactionPageDto } from './dto';
 import { Page, Transaction, transactionPageFromPageDto } from '../model';
 
@@ -22,6 +22,19 @@ export class TransactionService extends AbstractDataService {
 
     return this.GET(url).pipe(
       map((resp: TransactionPageDto) => transactionPageFromPageDto(resp))
+    );
+  }
+
+  findAll(): Observable<Transaction[]> {
+    return forkJoin([
+      this.findJson(1),
+      this.findJson(2),
+      this.findJson(3)
+    ]).pipe(
+      map((resp: [Page<Transaction>, Page<Transaction>, Page<Transaction>]) => {
+        const result = new Array<Transaction>();
+        return result.concat(resp[0].data, resp[1].data, resp[2].data);
+      })
     );
   }
 

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TransactionService } from '../transaction.service';
-import { Page, Transaction } from '../../model';
+import { Transaction } from '../../model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionResolver implements Resolve<Observable<Page<Transaction>>> {
+export class TransactionResolver implements Resolve<Observable<Transaction[]>> {
 
   private _transactionService: TransactionService;
 
@@ -17,8 +17,12 @@ export class TransactionResolver implements Resolve<Observable<Page<Transaction>
     this._transactionService = transactionService;
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page<Transaction>> {
-    const pageNumber = parseInt(route.queryParamMap.get('page') || '1', 10);
-    return this._transactionService.findJson(pageNumber);
+  // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page<Transaction>> {
+  //   const pageNumber = parseInt(route.queryParamMap.get('page') || '1', 10);
+  //   return this._transactionService.findJson(pageNumber);
+  // }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Transaction[]> {
+    return this._transactionService.findAll();
   }
 }
