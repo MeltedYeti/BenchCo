@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Subject } from 'rxjs';
+import { map, Subject, takeUntil } from 'rxjs';
 import { Page, Transaction } from '../model';
 
 @Component({
@@ -12,13 +12,11 @@ import { Page, Transaction } from '../model';
 export class TransactionsComponent implements OnInit, OnDestroy {
   private readonly _onDestroy = new Subject();
 
-  readonly columns: string[] = [
-    'date', 'company', 'ledger', 'amount'
-  ];
+  readonly columns: string[] = ['date', 'company', 'ledger', 'amount'];
 
-  public transactions: Transaction[] = [];
-  public page: number = 1;
-  public total: number = 0;
+  transactions: Transaction[] = [];
+  page: number = 1;
+  total: number = 0;
 
   constructor(
     private _route: ActivatedRoute
@@ -26,7 +24,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._route.data.pipe(
-      map(d => d['transactions'])
+      map(d => d['transactions']),
+      takeUntil(this._onDestroy)
     ).subscribe((page: Page<Transaction>) => {
       this.transactions = page.data;
       this.total = page.totalCount;

@@ -14,9 +14,12 @@ html {
 }
 
 html, body {
+  box-sizing: border-box;
   height: 100%;
 }
 
-.bench-root {
+.bench-theme {
+  width: 100%;
+  height: 100%;
   @include bench-theme.bench-theme();
 }

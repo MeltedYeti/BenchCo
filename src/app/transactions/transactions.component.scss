@@ -1,0 +1,93 @@
+@use "@angular/material" as mat;
+
+@mixin bch-transactions-theme($theme, $typography) {
+  $primary: mat.get-color-from-palette(map-get($theme, primary));
+  $accent: mat.get-color-from-palette(map-get($theme, accent));
+  $background: mat.get-color-from-palette(map-get($theme, accent), 200);
+
+  $white: #FFFFFF;
+
+  .bch-transactions {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+
+    background-color: $background;
+
+
+    &__table.bch-transaction-table {
+
+    }
+  }
+
+  .bch-table {
+    &__header-row {
+      background-color: $primary;
+    }
+
+    &__row {
+
+    }
+  }
+
+  .bch-header-row {
+    &__cell {
+      @include mat.typography-level($typography, 'body-2');
+      font-weight: bolder;
+      color: $white;
+    }
+  }
+}
+
+.bch-transactions {
+  display: flex;
+  flex-direction: column;
+
+  &__table {
+
+  }
+}
+
+.bch-table {
+  &__header-row {
+  }
+
+  &__row {
+
+  }
+}
+
+.bch-header-row {
+  &__cell {
+
+  }
+}
+
+.bch-table-row {
+  &__cell {
+
+  }
+}
+
+.bch-header-cell {
+
+}
+
+.bch-cell {
+
+}
+
+.bch-header-cell,
+.bch-cell {
+  &:first-child {
+    padding-right: 0.6rem;
+  }
+
+  &:last-child {
+    padding-left: 0.6rem;
+  }
+
+  &:not(:first-child, :last-child) {
+    padding: 0 0.6rem;
+  }
+}

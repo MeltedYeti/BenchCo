@@ -5,7 +5,7 @@ $bench-typography: mat.define-typography-config();
 
 $bench-primary-palette: mat.define-palette(mat.$indigo-palette);
 $bench-accent-palette: mat.define-palette(mat.$blue-gray-palette);
-$bench-theme: mat.define-dark-theme((
+$bench-theme: mat.define-light-theme((
   color: (
     primary: $bench-primary-palette,
     accent: $bench-accent-palette
@@ -14,10 +14,7 @@ $bench-theme: mat.define-dark-theme((
 
 @include mat.core($bench-theme);
 
-
 @mixin bench-theme() {
   @include mat.all-component-themes($bench-theme);
   @include bench-component-theme($bench-theme, $bench-typography);
 }
-
-

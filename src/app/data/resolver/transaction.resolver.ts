@@ -19,6 +19,6 @@ export class TransactionResolver implements Resolve<Observable<Page<Transaction>
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page<Transaction>> {
     const pageNumber = parseInt(route.queryParamMap.get('page') || '1', 10);
-    return this._transactionService.find(pageNumber);
+    return this._transactionService.findJson(pageNumber);
   }
 }

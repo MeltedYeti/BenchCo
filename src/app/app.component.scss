@@ -1,0 +1,7 @@
+@mixin bench-root-theme($theme, $typography) {
+  .bch-root {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}

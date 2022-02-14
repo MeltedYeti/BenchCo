@@ -7,6 +7,6 @@ export interface TransactionDto {
   Company: string;
 }
 
-export interface TransactionDtoPage extends PageDto {
+export interface TransactionPageDto extends PageDto {
   transactions: TransactionDto[];
 }

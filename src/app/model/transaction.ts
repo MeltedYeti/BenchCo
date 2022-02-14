@@ -1,4 +1,4 @@
-import { TransactionDto, TransactionDtoPage } from '../data/dto/transactionDto';
+import { TransactionDto, TransactionPageDto } from '../data/dto';
 import { Page } from './page';
 
 export class Transaction {
@@ -29,7 +29,7 @@ export const transactionFromTransactionDto = (dto: TransactionDto): Transaction 
   );
 };
 
-export const transactionPageFromPageDto = (dto: TransactionDtoPage): Page<Transaction> => {
+export const transactionPageFromPageDto = (dto: TransactionPageDto): Page<Transaction> => {
   return new Page<Transaction>(
     dto.totalCount,
     dto.page,
