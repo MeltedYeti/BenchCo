@@ -2,10 +2,8 @@
 
 @import "../app/app.component";
 @import "../app/transactions/transactions.component";
-@import "../app/transactions/components/transaction-list/transaction-list.component";
 
 @mixin bench-component-theme($theme, $typography) {
   @include bench-root-theme($theme, $typography);
   @include bch-transactions-theme($theme, $typography);
-  @include bch-transaction-list-theme($theme, $typography);
 }

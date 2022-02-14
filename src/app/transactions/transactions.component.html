@@ -13,7 +13,8 @@
     <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">{{ transaction.ledger }}</td>
   </ng-container>
   <ng-container matColumnDef="amount">
-    <th id="th_amount" class="bch-header-cell bch-header-row__cell" mat-header-cell *matHeaderCellDef>Amount</th>
+    <th id="th_amount" class="bch-header-cell bch-header-row__cell" mat-header-cell
+        *matHeaderCellDef>{{ calculateTotal() | currency }}</th>
     <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">
       {{ transaction.amount | currency }}</td>
   </ng-container>
