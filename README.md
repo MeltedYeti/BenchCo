@@ -36,4 +36,7 @@ everything, I just added a few for examples.
    prettier.
 4. My commits are not that organized, but I find that commit messages don't do much in the long run as they are normally
    quashed when merging the feature branch back into the main.
+5. I am aware that I am using a deprecated method with `expect().toBeObservable()` but I am running short on time to
+   look up the new way of testing observables.
+6. I would also have converted the project to use Jest over Jasmine if I had time
 
