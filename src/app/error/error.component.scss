@@ -1,0 +1,17 @@
+@use "@angular/material" as mat;
+
+@mixin bch-error-component-theme($theme, $typography) {
+  $background: mat.get-color-from-palette(map-get($theme, accent), 200);
+  .bch-error {
+    height: 100%;
+    width: 100%;
+    background-color: $background;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.bch-error-card {
+  max-height: 50rem;
+  align-self: center;
+}

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionResolver } from './data/resolver/transaction.resolver';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
     resolve: {
       transactions: TransactionResolver
     }
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
   },
   { path: '', redirectTo: 'transactions?page=1', pathMatch: 'full' }
 ];

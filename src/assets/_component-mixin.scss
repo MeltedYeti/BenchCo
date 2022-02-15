@@ -2,8 +2,10 @@
 
 @import "../app/app.component";
 @import "../app/transactions/transactions.component";
+@import "../app/error/error.component";
 
 @mixin bench-component-theme($theme, $typography) {
   @include bench-root-theme($theme, $typography);
   @include bch-transactions-theme($theme, $typography);
+  @include bch-error-component-theme($theme, $typography);
 }
