@@ -34,4 +34,6 @@ everything, I just added a few for examples.
    page as an orchestrator and/or route.
 3. The error page is extremely basic and could be done a better, but I believe it works and is easily refactored to look
    prettier.
+4. My commits are not that organized, but I find that commit messages don't do much in the long run as they are normally
+   quashed when merging the feature branch back into the main.
 
