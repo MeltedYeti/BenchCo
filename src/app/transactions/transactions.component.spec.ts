@@ -3,12 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TransactionsComponent } from './transactions.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ActivatedRouteMock } from '../../testing/activatedRouteMock';
 import { Transaction } from '../model';
-import { getMockTransactions } from '../../testing/mock-model/mockTransaction';
 import { of } from 'rxjs';
+import { getMockTransactions } from '../../testing/mock-model';
+import { ActivatedRouteMock } from '../../testing';
 
-// file.only
 describe('TransactionsComponent', () => {
   function getMockActivatedRoute(): ActivatedRouteMock {
     const mock = new ActivatedRouteMock();
@@ -16,9 +15,10 @@ describe('TransactionsComponent', () => {
     return mock;
   }
 
-  let component: TransactionsComponent;
+  let sut: TransactionsComponent;
   let fixture: ComponentFixture<TransactionsComponent>;
   let transactions: Transaction[];
+  let activatedRoute: ActivatedRoute;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -34,12 +34,23 @@ describe('TransactionsComponent', () => {
 
   beforeEach(() => {
     transactions = getMockTransactions();
+    activatedRoute = TestBed.inject(ActivatedRoute);
     fixture = TestBed.createComponent(TransactionsComponent);
-    component = fixture.componentInstance;
+    sut = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(sut).toBeTruthy();
+  });
+
+  it('should set the transactions from the route data', () => {
+    expect(sut.transactions).toEqual(transactions);
+  });
+
+  it('should calculate the total amount of all transactions', () => {
+    const expectedTotal = 356.56;
+
+    expect(sut.calculateTotal()).toEqual(expectedTotal);
   });
 });

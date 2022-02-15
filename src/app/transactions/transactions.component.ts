@@ -22,7 +22,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
   calculateTotal(): number {
     return this.transactions.reduce((total: number, transaction: Transaction) => {
-      return transaction.amount;
+      return total + transaction.amount;
     }, 0);
   }
 

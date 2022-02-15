@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AbstractDataService, IRequestOptions } from './abstract-data.service';
 import { HttpMethod } from '../model/enum';
+import { Observable } from 'rxjs';
 
 @Injectable()
 class TestService extends AbstractDataService {
-  registryBaseUrl = 'http://localhost';
 
   constructor(
     http: HttpClient,
@@ -17,6 +17,22 @@ class TestService extends AbstractDataService {
 
   exposeGetUrl(path: string): string {
     return this.getUrl(path);
+  }
+
+  public override GET(url: string, options?: IRequestOptions): Observable<Object> {
+    return super.GET(url, options);
+  }
+
+  public override POST(url: string, data: any, options?: IRequestOptions): Observable<Object> {
+    return super.POST(url, data, options);
+  }
+
+  public override PUT(url: string, data: any, options?: IRequestOptions): Observable<Object> {
+    return super.PUT(url, data, options);
+  }
+
+  public override DELETE(url: string, options?: IRequestOptions): Observable<Object> {
+    return super.DELETE(url, options);
   }
 }
 
@@ -102,7 +118,6 @@ describe('AbstractDataService', () => {
       sut.DELETE('/delete', options).subscribe();
       const req = httpTestingController.expectOne('/delete?key=value');
       expect(req.request.method).toEqual(HttpMethod.DELETE);
-      const headers: HttpHeaders = new HttpHeaders({ ['header-key']: 'value' });
 
       expect(req.request.headers.get('header-key')).toEqual('value');
       req.flush({});
@@ -118,7 +133,7 @@ describe('AbstractDataService', () => {
     });
 
     it('should concat the path variable onto the configuration base url', () => {
-      const expected = 'http://localhost/test';
+      const expected = 'https://resttest.bench.co/test';
       expect(sut.exposeGetUrl('/test')).toEqual(expected);
     });
   });

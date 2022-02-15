@@ -17,8 +17,7 @@ export class TransactionService extends AbstractDataService {
   }
 
   find(page: number): Observable<Page<Transaction>> {
-    // 10 per page
-    const url = this.getUrl(`?${page}.json`);
+    const url = this.getUrl(`${this.basePath}/?${page}.json`);
 
     return this.GET(url).pipe(
       map((resp: TransactionPageDto) => transactionPageFromPageDto(resp))

@@ -12,18 +12,7 @@ export interface IRequestOptions {
   responseType?: any;
 }
 
-interface IAbstractDataService {
-  GET(url: string, options: IRequestOptions): Observable<Object>;
-
-  POST(url: string, data: any, options?: IRequestOptions): Observable<Object>;
-
-  PUT(url: string, data: any, options?: IRequestOptions): Observable<Object>;
-
-  DELETE(url: string, options?: IRequestOptions): Observable<Object>;
-}
-
-
-export abstract class AbstractDataService implements IAbstractDataService {
+export abstract class AbstractDataService {
   readonly baseUrl: string;
 
   protected constructor(
@@ -36,19 +25,19 @@ export abstract class AbstractDataService implements IAbstractDataService {
     return this.baseUrl + path;
   }
 
-  public GET(url: string, options?: IRequestOptions): Observable<any> {
+  protected GET(url: string, options?: IRequestOptions): Observable<any> {
     return this.http.get(url, options);
   }
 
-  public POST(url: string, data: any, options?: IRequestOptions): Observable<any> {
+  protected POST(url: string, data: any, options?: IRequestOptions): Observable<any> {
     return this.http.post(url, data, options);
   }
 
-  public PUT(url: string, data: any, options?: IRequestOptions): Observable<any> {
+  protected PUT(url: string, data: any, options?: IRequestOptions): Observable<any> {
     return this.http.put(url, data, options);
   }
 
-  public DELETE(url: string, options?: IRequestOptions): Observable<any> {
+  protected DELETE(url: string, options?: IRequestOptions): Observable<any> {
     return this.http.delete(url, options);
   }
 
