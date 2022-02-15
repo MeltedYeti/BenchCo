@@ -27,13 +27,11 @@ requirements. Things such as creating a responsive layout with an actual theme, 
 to add paging but decided that was overkill and instead just loaded all results at once. My unit tests do not cover
 everything, I just added a few for examples.
 
-## Takeaways
-
 1. You'll notice I had to manually convert the values to numbers in my calculateTotal method, this is because for
    whatever reason (I am not positive) Angular was changing the values to strings leaving you with a long string of
    numbers, not the sum.
 2. There are places I would break up the component, normally I place results in a display component, and leave the main
    page as an orchestrator and/or route.
-3. 
-
+3. The error page is extremely basic and could be done a better, but I believe it works and is easily refactored to look
+   prettier.
 
