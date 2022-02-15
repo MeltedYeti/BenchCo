@@ -2,23 +2,29 @@
        aria-label="Transactions">
   <ng-container matColumnDef="date">
     <th id="th_date" class="bch-header-cell bch-header-row__cell" mat-header-cell *matHeaderCellDef>Date</th>
-    <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">{{ transaction.date }}</td>
+    <td id="td_date_{{ i }}" mat-cell class="bch-cell bch-table-row__cell"
+        *matCellDef="let transaction; let i = index">{{ transaction.date }}</td>
   </ng-container>
   <ng-container matColumnDef="company">
     <th id="th_company" class="bch-header-cell bch-header-row__cell" mat-header-cell *matHeaderCellDef>Company</th>
-    <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">{{ transaction.company }}</td>
+    <td id="td_company_{{ i }}" mat-cell class="bch-cell bch-table-row__cell"
+        *matCellDef="let transaction; let i = index">{{ transaction.company }}</td>
   </ng-container>
   <ng-container matColumnDef="ledger">
     <th id="th_ledger" class="bch-header-cell bch-header-row__cell" mat-header-cell *matHeaderCellDef>Account</th>
-    <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">{{ transaction.ledger }}</td>
+    <td id="td_account_{{ i }}" mat-cell class="bch-cell bch-table-row__cell"
+        *matCellDef="let transaction; let i = index">{{ transaction.ledger }}</td>
   </ng-container>
   <ng-container matColumnDef="amount">
     <th id="th_amount" class="bch-header-cell bch-header-row__cell" mat-header-cell
         *matHeaderCellDef>{{ calculateTotal() | currency }}</th>
-    <td mat-cell class="bch-cell bch-table-row__cell" *matCellDef="let transaction">
+    <td id="td_amount_{{ i }}" mat-cell class="bch-cell bch-table-row__cell"
+        *matCellDef="let transaction; let i = index">
       {{ transaction.amount | currency }}</td>
   </ng-container>
 
-  <tr class="bch-table__header-row bch-header-row" mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr class="bch-table__row bch-row" mat-row *matRowDef="let row; columns: columns;"></tr>
+  <tr id="headerRow_transactions" class="bch-table__header-row bch-header-row" mat-header-row
+      *matHeaderRowDef="columns"></tr>
+  <tr id="row_transaction_{{ i }}" class="bch-table__row bch-row" mat-row
+      *matRowDef="let row; columns: columns; let i = index;"></tr>
 </table>

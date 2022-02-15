@@ -5,9 +5,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { transactionPageFromPageDto } from '../model';
-import { HttpMethod } from '../model/enum';
 import { getMockTransactionPage, getMockTransactionPageDto, getMockTransactions } from '../../testing/mock-model';
 import { cold } from 'jasmine-marbles';
+import { HttpMethod } from '../../testing';
 
 describe('CompanyService', () => {
   const BASE_URL = 'https://resttest.bench.co';

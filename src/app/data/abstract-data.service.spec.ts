@@ -3,8 +3,8 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AbstractDataService, IRequestOptions } from './abstract-data.service';
-import { HttpMethod } from '../model/enum';
 import { Observable } from 'rxjs';
+import { HttpMethod } from '../../testing';
 
 @Injectable()
 class TestService extends AbstractDataService {

@@ -21,9 +21,10 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   ) {}
 
   calculateTotal(): number {
+    const initialAmount: number = 0;
     return this.transactions.reduce((total: number, transaction: Transaction) => {
-      return total + transaction.amount;
-    }, 0);
+      return +total + +transaction.amount;
+    }, initialAmount);
   }
 
   ngOnInit(): void {

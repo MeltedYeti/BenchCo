@@ -17,6 +17,7 @@ export class TransactionResolver implements Resolve<Observable<Transaction[]>> {
     this._transactionService = transactionService;
   }
 
+  // Partial of what I would have done were I implementing paging
   // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Page<Transaction>> {
   //   const pageNumber = parseInt(route.queryParamMap.get('page') || '1', 10);
   //   return this._transactionService.findJson(pageNumber);
