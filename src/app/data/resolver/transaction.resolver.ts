@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TransactionService } from '../transaction.service';
 import { Transaction } from '../../model';
 
@@ -17,15 +17,7 @@ export class TransactionResolver implements Resolve<Observable<Transaction[]>> {
     this._transactionService = transactionService;
   }
 
-  // Partial of what I would have done were I implementing paging
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Transaction[]> {
-    const pageNumber = parseInt(route.queryParamMap.get('page') || '1', 10);
-    return this._transactionService.findJson(pageNumber).pipe(
-      map(t => t.data)
-    );
+    return this._transactionService.findAll();
   }
-
-  // resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Transaction[]> {
-  //   return this._transactionService.findAll();
-  // }
 }

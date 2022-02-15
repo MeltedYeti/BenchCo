@@ -9,16 +9,16 @@ This project was generated with [Angular CLI](https://github.com/angular/anguar-
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
-any of the source files.
+Run `ng serve` for a dev server if you have the Angular CLI installed else run `npm run start`. Navigate
+to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the project or `npm run build`. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test`, or `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Considerations
 
